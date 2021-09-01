@@ -79,6 +79,7 @@ public class DogGenetics {
         
         ArrayList indexes = new ArrayList();
         
+        // Assigning random number between 3-6 for the amount of displayed breeds.
         int nbOfBreeds = selectNumberOfBreeds(randGen);
         
         // Generating first index
@@ -99,14 +100,24 @@ public class DogGenetics {
             i++;
         }
         
-        
+        // instanciating the array of float v
+        // v will hold the values of the different breeds
+        // the rate of the historical data
         float[] v = new float[nbOfBreeds];
-        int sum = 0;
         
-        for(int i =0 ; i<32; i++)
+        // 
+        // the following code assign different values to array of float v
+        
+        
+        // change to 2^n        - with n the nth Generation for realistic modeling
+        int niter= 2^5;
+        
+        
+        // assign random rates with realistic modeling
+        for(int i =0 ; i<niter; i++)
         {
             int ii = randGen.nextInt(nbOfBreeds);
-            v[ii] += 3.125f;
+            v[ii] += 100.0f/(float) niter;
         }
         
         
@@ -118,34 +129,27 @@ public class DogGenetics {
         
         System.out.println("\n"+dogName+" is : \n");
         
-        
+        // data formatting support
         ArrayList selectedBreeds = new ArrayList();
-        
         for(int i =0 ; i< nbOfBreeds ; i++)
         {
+            if(v[i]==0.0f)
+            {
+                continue;
+            }
+            // data formatting
             selectedBreeds.add(v[i] + "% " + breedsArray[(int) indexes.get(i)]);
             
         }
         
+        // Display Data
         for (Object output : selectedBreeds)
         {
             System.out.println(output);
         }
         
-        
-        /*
-        System.out.println(v1 +"  St. Bernard");
-        System.out.println(v2 +"  Chihuahua");
-        System.out.println(v3 +"  Dramatic RedNosed Asian Pug");
-        System.out.println(v4 +"  Common Cur");
-        System.out.println(v5 +"  King Doberman");
-        */
-        
-        
         //the outro
         System.out.println("\nWow, that's QUITE the dog!");
-        
-        
     }
 
     
