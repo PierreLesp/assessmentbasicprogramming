@@ -109,9 +109,16 @@ public class DogGenetics {
         // the following code assign different values to array of float v
         
         
-        // change to 2^n        - with n the nth Generation for realistic modeling
-        int niter= 2^5;
+        // change thGeneration        - with n the nth Generation for realistic modeling
+        int niter= 1;
+        int thGeneration =5;
         
+        for(int i=0 ; i< thGeneration ; i++)
+        {
+            niter *= 2;
+        }
+        
+        System.out.println("NITER = " + niter);
         
         // assign random rates with realistic modeling
         for(int i =0 ; i<niter; i++)
