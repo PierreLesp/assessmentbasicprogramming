@@ -47,6 +47,8 @@ import java.util.Scanner;
  * 
  * then select a random number of breeds to display
  * 
+ * Then display only valid rates of breeds
+ * 
  */
 
 
@@ -98,26 +100,17 @@ public class DogGenetics {
         }
         
         
-        int[] v = new int[nbOfBreeds];
+        float[] v = new float[nbOfBreeds];
         int sum = 0;
-        for(int i =0 ; i< nbOfBreeds -1; i++)
+        
+        for(int i =0 ; i<32; i++)
         {
-            v[i] = randGen.nextInt((int) 100/nbOfBreeds);
-            sum += v[i];
+            int ii = randGen.nextInt(nbOfBreeds);
+            v[ii] += 3.125f;
         }
         
-        v[nbOfBreeds -1 ] = 100 - sum;
+        
 
-        //Assigning 5 different values
-          
-                
-         /*
-        int v[1] = randGen.nextInt(20);
-        int v[2] = randGen.nextInt(8);
-        int v[3] = randGen.nextInt(56);
-        int v[4] = randGen.nextInt(14);
-        int v[5] = 100 - v[1] - v[2] - v[3] - v[4];
-        */
                 
                 
         // Display fake information about the dog
@@ -130,7 +123,7 @@ public class DogGenetics {
         
         for(int i =0 ; i< nbOfBreeds ; i++)
         {
-            selectedBreeds.add(v[i] + "%  " + breedsArray[(int) indexes.get(i)]);
+            selectedBreeds.add(v[i] + "% " + breedsArray[(int) indexes.get(i)]);
             
         }
         
